@@ -1,38 +1,34 @@
 import pandas as pd
 import time
 
-def merge(left, right, key):
-    merged = []
-    i = j = 0
-    while i < len(left) and j < len(right):
-        if left[i][key] <= right[j][key]:
-            merged.append(left[i])
-            i += 1
-        else:
-            merged.append(right[j])
-            j += 1
-    merged.extend(left[i:])
-    merged.extend(right[j:])
-    return merged
-
-def merge_sort_iterative(arr, key):
-    n = len(arr)
-    width = 1
-    while width < n:
-        for i in range(0, n, 2 * width):
-            left = arr[i:i + width]
-            right = arr[i + width:i + 2 * width]
-            arr[i:i + 2 * width] = merge(left, right, key)
-        width *= 2
+# Fungsi Insertion Sort Iteratif
+def insertion_sort_iterative(arr, key):
+    for i in range(1, len(arr)):
+        current_element = arr[i]
+        j = i - 1
+        # Geser elemen yang lebih besar dari current_element
+        while j >= 0 and arr[j][key] > current_element[key]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = current_element
     return arr
 
-def merge_sort_recursive(arr, key):
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr) // 2
-    left = merge_sort_recursive(arr[:mid], key)
-    right = merge_sort_recursive(arr[mid:], key)
-    return merge(left, right, key)
+# Fungsi Insertion Sort Rekursif
+def insertion_sort_recursive(arr, n, key):
+    # Base case: jika array hanya berisi 1 elemen
+    if n <= 1:
+        return
+
+    # Sort n-1 elemen pertama
+    insertion_sort_recursive(arr, n - 1, key)
+
+    # Sisipkan elemen terakhir ke posisi yang sesuai
+    last = arr[n - 1]
+    j = n - 2
+    while j >= 0 and arr[j][key] > last[key]:
+        arr[j + 1] = arr[j]
+        j -= 1
+    arr[j + 1] = last
 
 
 if __name__ == "__main__":
@@ -56,12 +52,15 @@ if __name__ == "__main__":
     results = []
 
     for i in range(5):
+        # Insertion Sort Iteratif
         start_time_iterative = time.perf_counter()
-        merge_sort_iterative(products.copy(), key)
+        insertion_sort_iterative(products.copy(), key)
         execution_time_iterative = time.perf_counter() - start_time_iterative
 
+        # Insertion Sort Rekursif
         start_time_recursive = time.perf_counter()
-        merge_sort_recursive(products.copy(), key)
+        products_copy = products.copy()
+        insertion_sort_recursive(products_copy, len(products_copy), key)
         execution_time_recursive = time.perf_counter() - start_time_recursive
 
         results.append((execution_time_iterative, execution_time_recursive))
