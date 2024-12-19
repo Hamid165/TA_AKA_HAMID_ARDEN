@@ -1,12 +1,12 @@
 import pandas as pd
 import time
+import matplotlib.pyplot as plt
 
 # Fungsi Insertion Sort Iteratif
 def insertion_sort_iterative(arr, key):
     for i in range(1, len(arr)):
         current_element = arr[i]
         j = i - 1
-        # Geser elemen yang lebih besar dari current_element
         while j >= 0 and arr[j][key] > current_element[key]:
             arr[j + 1] = arr[j]
             j -= 1
@@ -15,14 +15,9 @@ def insertion_sort_iterative(arr, key):
 
 # Fungsi Insertion Sort Rekursif
 def insertion_sort_recursive(arr, n, key):
-    # Base case: jika array hanya berisi 1 elemen
     if n <= 1:
         return
-
-    # Sort n-1 elemen pertama
     insertion_sort_recursive(arr, n - 1, key)
-
-    # Sisipkan elemen terakhir ke posisi yang sesuai
     last = arr[n - 1]
     j = n - 2
     while j >= 0 and arr[j][key] > last[key]:
@@ -32,7 +27,6 @@ def insertion_sort_recursive(arr, n, key):
 
 
 if __name__ == "__main__":
-
     # Data produk minimarket
     products = [
         {"id": 101, "name": "Milk", "price": 15000, "quantity": 20, "category": "Minuman"},
@@ -45,44 +39,64 @@ if __name__ == "__main__":
         {"id": 108, "name": "Soap", "price": 8000, "quantity": 40, "category": "Sabun"}
     ]
 
+    # Gandakan data untuk mendapatkan ukuran data lebih besar
     products = products * 100
-    key = "category"  # Mengurutkan berdasarkan kategori produk
 
-    # Hasil perbandingan waktu iteratif dan rekursif
-    results = []
+    # List untuk menyimpan hasil
+    all_results = []
 
-    for i in range(5):
-        # Insertion Sort Iteratif
-        start_time_iterative = time.perf_counter()
-        insertion_sort_iterative(products.copy(), key)
-        execution_time_iterative = time.perf_counter() - start_time_iterative
+    # Loop input sebanyak 5 kali
+    for run in range(1, 6):
+        print(f"\nRun {run} - Masukkan ukuran input (n):")
+        try:
+            n = int(input("Masukkan nilai n: "))
+            if n > len(products):
+                print(f"Nilai n terlalu besar! Maksimal: {len(products)}")
+                continue
 
-        # Insertion Sort Rekursif
-        start_time_recursive = time.perf_counter()
-        products_copy = products.copy()
-        insertion_sort_recursive(products_copy, len(products_copy), key)
-        execution_time_recursive = time.perf_counter() - start_time_recursive
+            # Ambil data sesuai ukuran input (n)
+            sample_data = products[:n]
 
-        results.append((execution_time_iterative, execution_time_recursive))
+            # Iterative
+            start_time_iterative = time.perf_counter()
+            insertion_sort_iterative(sample_data.copy(), "category")
+            exec_time_iterative = time.perf_counter() - start_time_iterative
 
-    # Mengonversi hasil ke DataFrame
-    df = pd.DataFrame(results, columns=['Iterative (s)', 'Recursive (s)'])
+            # Recursive
+            start_time_recursive = time.perf_counter()
+            insertion_sort_recursive(sample_data.copy(), len(sample_data), "category")
+            exec_time_recursive = time.perf_counter() - start_time_recursive
 
-    # Menampilkan hasil di terminal dalam bentuk tabel
-    print(f"+------|------------------|------------------+")
-    print(f"| Run  | Iterative (s)    | Recursive (s)    |")
-    print(f"+------|------------------|------------------+")
-    for i, (iter_time, rec_time) in enumerate(results, 1):
-        print(f"|{i:<4}  | {iter_time:<16.6f} | {rec_time:<16.6f} |")
-    print(f"+------|------------------|------------------+")
+            # Simpan hasil untuk setiap run
+            all_results.append((n, exec_time_recursive, exec_time_iterative))
 
-    # Menyimpan ke Excel, menggantikan data yang ada
-    file_path = r"C:\Users\ACER\Documents\FOLDER SEMESTER KULIAH\SEMESTER 3\AKA\tubes.xlsx"
-    
-    try:
-        # Menghapus data lama dan menyimpan data baru
-        with pd.ExcelWriter(file_path, engine='openpyxl', mode='w') as writer:
-            df.to_excel(writer, sheet_name='Results', index_label='Run')
-        print(f"Hasil berhasil disimpan di {file_path}")
-    except Exception as e:
-        print(f"Terjadi kesalahan saat menyimpan ke Excel: {e}")
+            # Konversi hasil ke DataFrame
+            df = pd.DataFrame(all_results, columns=['n', 'Recursive Time (s)', 'Iterative Time (s)'])
+
+            # Tampilkan hasil di terminal
+            print(df.to_string(index=False))
+
+            # Buat grafik
+            plt.figure(figsize=(10, 6))
+
+            # Plot Recursive
+            plt.plot(df['n'], df['Recursive Time (s)'], label='Recursive', color='red', marker='o', linestyle='-', linewidth=2)
+
+            # Plot Iterative
+            plt.plot(df['n'], df['Iterative Time (s)'], label='Iterative', color='blue', marker='o', linestyle='-', linewidth=2)
+
+            # Tambahkan label, judul, dan legenda
+            plt.title('Perbandingan Waktu Eksekusi Insertion Sort')
+            plt.xlabel('Ukuran Input (n)')
+            plt.ylabel('Waktu Eksekusi (detik)')
+            plt.legend()
+            plt.grid(True)
+            plt.tight_layout()
+
+            # Tampilkan grafik
+            plt.show()
+
+        except ValueError:
+            print("Masukkan angka yang valid!")
+
+    print("\nProgram selesai!")
