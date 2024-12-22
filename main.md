@@ -45,7 +45,9 @@ def insertion_sort_recursive(arr, n, key):
     arr[j + 1] = last
 ```
 
-## output terminal
+## Output Terminal
+
+```plaintext
 Run 1 - Masukkan ukuran input (n):
 Masukkan nilai n: 5
  n  Recursive Time (s)  Iterative Time (s)
@@ -82,6 +84,7 @@ Masukkan nilai n: 25
 25            0.000091            0.000240
 
 Program selesai!
+```
 
 ### Output Grafik
 ![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/grafik.png)
