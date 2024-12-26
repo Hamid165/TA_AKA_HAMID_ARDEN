@@ -1,32 +1,24 @@
-
-
 import pandas as pd
 import time
 import matplotlib.pyplot as plt
 
-# Fungsi Insertion Sort Iteratif
-def insertion_sort_iterative(arr, key):
-    for i in range(1, len(arr)):
-        current_element = arr[i]
-        j = i - 1
-        while j >= 0 and arr[j][key] > current_element[key]:
-            arr[j + 1] = arr[j]
-            j -= 1
-        arr[j + 1] = current_element
+# Fungsi Bubble Sort Iteratif
+def bubble_sort_iterative(arr, key):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j][key] > arr[j+1][key]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr
 
-# Fungsi Insertion Sort Rekursif
-def insertion_sort_recursive(arr, n, key):
-    if n <= 1:
+# Fungsi Bubble Sort Rekursif
+def bubble_sort_recursive(arr, n, key):
+    if n == 1:
         return
-    insertion_sort_recursive(arr, n - 1, key)
-    last = arr[n - 1]
-    j = n - 2
-    while j >= 0 and arr[j][key] > last[key]:
-        arr[j + 1] = arr[j]
-        j -= 1
-    arr[j + 1] = last
-
+    for i in range(n - 1):
+        if arr[i][key] > arr[i + 1][key]:
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
+    bubble_sort_recursive(arr, n - 1, key)
 
 if __name__ == "__main__":
     # Data produk minimarket
@@ -61,12 +53,12 @@ if __name__ == "__main__":
 
             # Iterative
             start_time_iterative = time.perf_counter()
-            insertion_sort_iterative(sample_data.copy(), "category")
+            bubble_sort_iterative(sample_data.copy(), "category")
             exec_time_iterative = time.perf_counter() - start_time_iterative
 
             # Recursive
             start_time_recursive = time.perf_counter()
-            insertion_sort_recursive(sample_data.copy(), len(sample_data), "category")
+            bubble_sort_recursive(sample_data.copy(), len(sample_data), "category")
             exec_time_recursive = time.perf_counter() - start_time_recursive
 
             # Simpan hasil untuk setiap run
@@ -88,7 +80,7 @@ if __name__ == "__main__":
             plt.plot(df['n'], df['Iterative Time (s)'], label='Iterative', color='blue', marker='o', linestyle='-', linewidth=2)
 
             # Tambahkan label, judul, dan legenda
-            plt.title('Perbandingan Waktu Eksekusi Insertion Sort')
+            plt.title('Perbandingan Waktu Eksekusi Bubble Sort')
             plt.xlabel('Ukuran Input (n)')
             plt.ylabel('Waktu Eksekusi (detik)')
             plt.legend()
