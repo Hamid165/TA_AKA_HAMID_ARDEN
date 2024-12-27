@@ -8,10 +8,10 @@
 
 ## Perbandingan Waktu Eksekusi Bubble Sort (Iteratif vs Rekursif)
 
-Proyek ini membandingkan waktu eksekusi antara dua implementasi algoritma **Insertion Sort**, yaitu versi **iteratif** dan **rekursif**. Pengguna dapat memasukkan ukuran input dan melihat perbandingan waktu eksekusi serta hasilnya dalam bentuk grafik.
+Proyek ini membandingkan waktu eksekusi antara dua implementasi algoritma **Bubble Sort**, yaitu versi **iteratif** dan **rekursif**. Pengguna dapat memasukkan ukuran input dan melihat perbandingan waktu eksekusi serta hasilnya dalam bentuk grafik.
 
 ## Fitur Utama
-- Implementasi algoritma **Insertion Sort** baik secara **iteratif** maupun **rekursif**.
+- Implementasi algoritma **Bubble Sort** baik secara **iteratif** maupun **rekursif**.
 - Pengguna dapat menginputkan ukuran data yang diinginkan (`n`).
 - Menampilkan hasil perbandingan waktu eksekusi dalam bentuk tabel yang rapi dan grafik.
 - Mencetak hasil tabel dengan garis untuk kejelasan.
