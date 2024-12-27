@@ -6,7 +6,7 @@
 
 ---
 
-## Perbandingan Waktu Eksekusi Insertion Sort (Iteratif vs Rekursif)
+## Perbandingan Waktu Eksekusi Bubble Sort (Iteratif vs Rekursif)
 
 Proyek ini membandingkan waktu eksekusi antara dua implementasi algoritma **Insertion Sort**, yaitu versi **iteratif** dan **rekursif**. Pengguna dapat memasukkan ukuran input dan melihat perbandingan waktu eksekusi serta hasilnya dalam bentuk grafik.
 
