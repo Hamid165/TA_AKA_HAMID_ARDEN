@@ -16,8 +16,6 @@ Proyek ini membandingkan waktu eksekusi antara dua implementasi algoritma **Bubb
 - Menampilkan hasil perbandingan waktu eksekusi dalam bentuk tabel yang rapi dan grafik.
 - Mencetak hasil tabel dengan garis untuk kejelasan.
 
-
-
 ```python
 ### Fungsi insertion_sort_iterative(arr, key)
 
@@ -51,40 +49,56 @@ def insertion_sort_recursive(arr, n, key):
 Run 1 - Masukkan ukuran input (n):
 Masukkan nilai n: 5
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000021             0.00003
+ 5            0.000012            0.000026
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_1.png)
 
+```plaintext
 Run 2 - Masukkan ukuran input (n):
 Masukkan nilai n: 10
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000021            0.000030
-10            0.000035            0.000114
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_2.png)
 
+```plaintext
 Run 3 - Masukkan ukuran input (n):
 Masukkan nilai n: 15
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000021            0.000030
-10            0.000035            0.000114
-15            0.000023            0.000035
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+15            0.000031            0.000048
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_3.png)
 
+```plaintext
 Run 4 - Masukkan ukuran input (n):
 Masukkan nilai n: 20
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000021            0.000030
-10            0.000035            0.000114
-15            0.000023            0.000035
-20            0.000043            0.000053
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+15            0.000031            0.000048
+20            0.000059            0.000069
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_4.png)
 
+```plaintext
 Run 5 - Masukkan ukuran input (n):
 Masukkan nilai n: 25
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000021            0.000030
-10            0.000035            0.000114
-15            0.000023            0.000035
-20            0.000043            0.000053
-25            0.000091            0.000240
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+15            0.000031            0.000048
+20            0.000059            0.000069
+25            0.000088            0.000164
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_5.png)
 
 Program selesai!
 ```
-
-### Output Grafik
-![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/grafik.png)
