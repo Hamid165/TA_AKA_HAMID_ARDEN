@@ -1,96 +1,104 @@
-import pandas as pd
-import time
-import matplotlib.pyplot as plt
+# Tugas Akhir: Analisis Kompleksitas Algoritma
 
-# Fungsi Bubble Sort Iteratif
-def bubble_sort_iterative(arr, key):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j][key] > arr[j+1][key]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+## Anggota:
+- **Hamid Sabirin** (2311102129)
+- **Danendra Arden Shaduq** (2311102146)
+
+---
+
+## Perbandingan Waktu Eksekusi Bubble Sort (Iteratif vs Rekursif)
+
+Proyek ini membandingkan waktu eksekusi antara dua implementasi algoritma **Bubble Sort**, yaitu versi **iteratif** dan **rekursif**. Pengguna dapat memasukkan ukuran input dan melihat perbandingan waktu eksekusi serta hasilnya dalam bentuk grafik.
+
+## Fitur Utama
+- Implementasi algoritma **Bubble Sort** baik secara **iteratif** maupun **rekursif**.
+- Pengguna dapat menginputkan ukuran data yang diinginkan (`n`).
+- Menampilkan hasil perbandingan waktu eksekusi dalam bentuk tabel yang rapi dan grafik.
+- Mencetak hasil tabel dengan garis untuk kejelasan.
+
+```python
+### Fungsi insertion_sort_iterative(arr, key)
+
+def insertion_sort_iterative(arr, key):
+    for i in range(1, len(arr)):
+        current_element = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j][key] > current_element[key]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = current_element
     return arr
 
-# Fungsi Bubble Sort Rekursif
-def bubble_sort_recursive(arr, n, key):
-    if n == 1:
+### Fungsi insertion_sort_recursive(arr, n, key)
+
+def insertion_sort_recursive(arr, n, key):
+    if n <= 1:
         return
-    for i in range(n - 1):
-        if arr[i][key] > arr[i + 1][key]:
-            arr[i], arr[i + 1] = arr[i + 1], arr[i]
-    bubble_sort_recursive(arr, n - 1, key)
+    insertion_sort_recursive(arr, n - 1, key)
+    last = arr[n - 1]
+    j = n - 2
+    while j >= 0 and arr[j][key] > last[key]:
+        arr[j + 1] = arr[j]
+        j -= 1
+    arr[j + 1] = last
+```
 
-if __name__ == "__main__":
-    # Data produk minimarket
-    products = [
-        {"id": 101, "name": "Milk", "price": 15000, "quantity": 20, "category": "Minuman"},
-        {"id": 102, "name": "Bread", "price": 12000, "quantity": 15, "category": "Makanan"},
-        {"id": 103, "name": "Shampoo", "price": 25000, "quantity": 10, "category": "Sabun"},
-        {"id": 104, "name": "Apple", "price": 5000, "quantity": 50, "category": "Buah"},
-        {"id": 105, "name": "Toothpaste", "price": 10000, "quantity": 25, "category": "Sabun"},
-        {"id": 106, "name": "Cheese", "price": 20000, "quantity": 5, "category": "Makanan"},
-        {"id": 107, "name": "Orange Juice", "price": 18000, "quantity": 30, "category": "Minuman"},
-        {"id": 108, "name": "Soap", "price": 8000, "quantity": 40, "category": "Sabun"}
-    ]
+## Output Terminal
 
-    # Gandakan data untuk mendapatkan ukuran data lebih besar
-    products = products * 100
+```plaintext
+Run 1 - Masukkan ukuran input (n):
+Masukkan nilai n: 5
+ n  Recursive Time (s)  Iterative Time (s)
+ 5            0.000012            0.000026
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_1.png)
 
-    # List untuk menyimpan hasil
-    all_results = []
+```plaintext
+Run 2 - Masukkan ukuran input (n):
+Masukkan nilai n: 10
+ n  Recursive Time (s)  Iterative Time (s)
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_2.png)
 
-    # Loop input sebanyak 5 kali
-    for run in range(1, 6):
-        print(f"\nRun {run} - Masukkan ukuran input (n):")
-        try:
-            n = int(input("Masukkan nilai n: "))
-            if n > len(products):
-                print(f"Nilai n terlalu besar! Maksimal: {len(products)}")
-                continue
+```plaintext
+Run 3 - Masukkan ukuran input (n):
+Masukkan nilai n: 15
+ n  Recursive Time (s)  Iterative Time (s)
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+15            0.000031            0.000048
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_3.png)
 
-            # Ambil data sesuai ukuran input (n)
-            sample_data = products[:n]
+```plaintext
+Run 4 - Masukkan ukuran input (n):
+Masukkan nilai n: 20
+ n  Recursive Time (s)  Iterative Time (s)
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+15            0.000031            0.000048
+20            0.000059            0.000069
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_4.png)
 
-            # Iterative
-            start_time_iterative = time.perf_counter()
-            bubble_sort_iterative(sample_data.copy(), "category")
-            exec_time_iterative = time.perf_counter() - start_time_iterative
+```plaintext
+Run 5 - Masukkan ukuran input (n):
+Masukkan nilai n: 25
+ n  Recursive Time (s)  Iterative Time (s)
+ 5            0.000012            0.000026
+10            0.000019            0.000034
+15            0.000031            0.000048
+20            0.000059            0.000069
+25            0.000088            0.000164
+```
+### Output Grafik
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_5.png)
 
-            # Recursive
-            start_time_recursive = time.perf_counter()
-            bubble_sort_recursive(sample_data.copy(), len(sample_data), "category")
-            exec_time_recursive = time.perf_counter() - start_time_recursive
-
-            # Simpan hasil untuk setiap run
-            all_results.append((n, exec_time_recursive, exec_time_iterative))
-
-            # Konversi hasil ke DataFrame
-            df = pd.DataFrame(all_results, columns=['n', 'Recursive Time (s)', 'Iterative Time (s)'])
-
-            # Tampilkan hasil di terminal
-            print(df.to_string(index=False))
-
-            # Buat grafik
-            plt.figure(figsize=(10, 6))
-
-            # Plot Recursive
-            plt.plot(df['n'], df['Recursive Time (s)'], label='Recursive', color='red', marker='o', linestyle='-', linewidth=2)
-
-            # Plot Iterative
-            plt.plot(df['n'], df['Iterative Time (s)'], label='Iterative', color='blue', marker='o', linestyle='-', linewidth=2)
-
-            # Tambahkan label, judul, dan legenda
-            plt.title('Perbandingan Waktu Eksekusi Bubble Sort')
-            plt.xlabel('Ukuran Input (n)')
-            plt.ylabel('Waktu Eksekusi (detik)')
-            plt.legend()
-            plt.grid(True)
-            plt.tight_layout()
-
-            # Tampilkan grafik
-            plt.show()
-
-        except ValueError:
-            print("Masukkan angka yang valid!")
-
-    print("\nProgram selesai!")
+Program selesai!
+```
