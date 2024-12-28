@@ -70,7 +70,7 @@ if __name__ == "__main__":
             # Tampilkan hasil di terminal
             print(df.to_string(index=False))
 
-            # Buat grafik
+           # Buat grafik
             plt.figure(figsize=(10, 6))
 
             # Plot Recursive
@@ -85,11 +85,14 @@ if __name__ == "__main__":
             plt.ylabel('Waktu Eksekusi (detik)')
             plt.legend()
             plt.grid(True)
+
+            # Mengatur sumbu Y untuk menampilkan waktu dalam format yang diinginkan
+            plt.yticks([i * 0.0001 for i in range(int(max(df['Iterative Time (s)'])*10000) + 1)])
+
             plt.tight_layout()
 
             # Tampilkan grafik
             plt.show()
-
         except ValueError:
             print("Masukkan angka yang valid!")
 

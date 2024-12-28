@@ -49,56 +49,58 @@ def insertion_sort_recursive(arr, n, key):
 Run 1 - Masukkan ukuran input (n):
 Masukkan nilai n: 5
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000012            0.000026
+ 5            0.000031             0.00015
+
 ```
 ### Output Grafik
-![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_1.png)
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Grafik_1.png)
 
 ```plaintext
 Run 2 - Masukkan ukuran input (n):
-Masukkan nilai n: 10
+Masukkan nilai n: 20
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000012            0.000026
-10            0.000019            0.000034
+ 5            0.000031             0.00015
+20            0.000088             0.00030
+
 ```
 ### Output Grafik
-![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_2.png)
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Grafik_2.png)
 
 ```plaintext
 Run 3 - Masukkan ukuran input (n):
-Masukkan nilai n: 15
+Masukkan nilai n: 40
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000012            0.000026
-10            0.000019            0.000034
-15            0.000031            0.000048
+ 5            0.000031             0.00015
+20            0.000088             0.00030
+40            0.000225             0.00047
 ```
 ### Output Grafik
-![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_3.png)
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Grafik_3.png)
 
 ```plaintext
 Run 4 - Masukkan ukuran input (n):
-Masukkan nilai n: 20
+Masukkan nilai n: 60
  n  Recursive Time (s)  Iterative Time (s)
- 5            0.000012            0.000026
-10            0.000019            0.000034
-15            0.000031            0.000048
-20            0.000059            0.000069
+ 5            0.000031            0.000150
+20            0.000088            0.000300
+40            0.000225            0.000470
+60            0.000675            0.000766
 ```
 ### Output Grafik
-![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_4.png)
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Grafik_4.png)
 
 ```plaintext
 Run 5 - Masukkan ukuran input (n):
-Masukkan nilai n: 25
- n  Recursive Time (s)  Iterative Time (s)
- 5            0.000012            0.000026
-10            0.000019            0.000034
-15            0.000031            0.000048
-20            0.000059            0.000069
-25            0.000088            0.000164
+Masukkan nilai n: 100
+  n  Recursive Time (s)  Iterative Time (s)
+  5            0.000031            0.000150
+ 20            0.000088            0.000300
+ 40            0.000225            0.000470
+ 60            0.000675            0.000766
+100            0.001901            0.001830
 ```
 ### Output Grafik
-![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Figure_5.png)
+![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Grafik_5.png)
 
 Program selesai!
 ```
