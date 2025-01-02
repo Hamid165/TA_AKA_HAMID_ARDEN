@@ -101,6 +101,3 @@ Masukkan nilai n: 100
 ```
 ### Output Grafik
 ![output](https://github.com/Hamid165/TA_AKA_HAMID_ARDEN/blob/main/Grafik_5.png)
-
-Program selesai!
-```
